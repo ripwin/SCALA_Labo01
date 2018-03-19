@@ -23,6 +23,27 @@ def power(x: Double, n: Int): Double = {
   else x * power(x, n - 1)
 }
 
+/**
+  * Valeur absolue
+  */
+def abs(x: Double) ={
+  if(x < 0 ) -x
+  else x
+}
+
+/*
+ * Racine carré
+ */
+def sqrt(n: Double) = {
+  val epsilon = 0.0001
+  def calcSqrt(n: Double, x : Double): Double = {
+    if((abs(square(x) -n )/n) < epsilon) x
+    else calcSqrt(n, ((x+ n/x)/2))
+  }
+  calcSqrt(n, 1)
+}
+
+
 /*
  * Fonction factoriel récursive terminale
  */
@@ -41,3 +62,26 @@ def factorial(n: Int): Int = {
  */
 def gcd(a: Int, b: Int) : Int =
   if (b == 0) a else gcd(b, a % b)
+
+
+/*
+ * Mémoire de la machine
+ * utiliser une map var memory: Map(String, double) = Map()
+ */
+
+/*
+ * Equation du second degré
+ */
+
+/*
+ * Nombre premier
+ */
+
+
+/*
+ * Algorithme d'euclide étendu
+ */
+
+/*
+ * Inverse moduclaire
+ */
