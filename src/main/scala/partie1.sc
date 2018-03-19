@@ -87,8 +87,6 @@ def primeNumber(x: Int) : String ={
   else isPrimeNumber(x, 2)
 }
 
-
-
 /*
  * Algorithme d'euclide étendu
  */
@@ -96,3 +94,31 @@ def primeNumber(x: Int) : String ={
 /*
  * Inverse moduclaire
  */
+
+/*
+ * Equations 2eme degré
+ */
+def solve(a:Double, b:Double, c:Double) : List[Double] = {
+  def delta(a:Double, b:Double, c:Double)= square(b) - 4*a*c
+
+  val result = List[Double]()
+  if(a == 0) result
+
+  val d = delta(a,b,c)
+  d match {
+      // delta = 0
+    case 0 => result :+ (-b)/(2*a)
+      // delta > 0
+    case x if (d > 0) => {
+      result :+ ( (-b + sqrt(d))/2*a ) :+( (-b - sqrt(d))/2*a )
+    }
+    case _ => {
+      // delta < 0 ????? avec imaginaire ou solution vide dans R
+    //  result :+ (-b)/(2*a) :+ sqrt(-d)/(2*a) :+ (-sqrt(-d))/(2*a)
+    }
+    result
+  }
+}
+
+solve(1,1,-2)
+solve(4,4,1)
