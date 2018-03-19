@@ -76,6 +76,17 @@ def gcd(a: Int, b: Int) : Int =
 /*
  * Nombre premier
  */
+def primeNumber(x: Int) : String ={
+  def isPrimeNumber(a: Int, b:Int) : String = {
+    if(b >= sqrt(a)) a + "is a prime number"
+    else if(a % b == 0) "Not a prime number"
+    else isPrimeNumber(a, b + 1)
+  }
+
+  if (x < 2) "Not a prime number"
+  else isPrimeNumber(x, 2)
+}
+
 
 
 /*
