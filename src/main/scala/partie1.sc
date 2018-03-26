@@ -75,10 +75,11 @@ def gcd(a: Int, b: Int) : Int =
 
 /*
  * Nombre premier
+ * (Les valeurs < 2 ne sont pas considérées comme nombre premier)
  */
 def primeNumber(x: Int) : String ={
   def isPrimeNumber(a: Int, b:Int) : String = {
-    if(b >= sqrt(a)) a + "is a prime number"
+    if(b >= sqrt(a)) a + " is a prime number"
     else if(a % b == 0) "Not a prime number"
     else isPrimeNumber(a, b + 1)
   }
@@ -86,6 +87,7 @@ def primeNumber(x: Int) : String ={
   if (x < 2) "Not a prime number"
   else isPrimeNumber(x, 2)
 }
+
 
 /*
  * Algorithme d'euclide étendu
@@ -98,27 +100,30 @@ def primeNumber(x: Int) : String ={
 /*
  * Equations 2eme degré
  */
-def solve(a:Double, b:Double, c:Double) : List[Double] = {
-  def delta(a:Double, b:Double, c:Double)= square(b) - 4*a*c
 
-  val result = List[Double]()
-  if(a == 0) result
+def solve(a: Double, b: Double, c: Double): Any = {
+  def delta(a: Double, b: Double, c: Double) = square(b) - 4 * a * c
 
-  val d = delta(a,b,c)
+  // Si a = 0 alors ce n'est pas une equation du 2ème degré
+  if (a == 0) throw new Error("Syntax Error")
+
+  val d = delta(a, b, c)
+  println(d)
   d match {
-      // delta = 0
-    case 0 => result :+ (-b)/(2*a)
-      // delta > 0
+    // delta = 0 : solution unique
+    case 0 => List() :+ (-b) / (2 * a)
+    // delta > 0 : 1ère solution et 2ème solution
     case x if (d > 0) => {
-      result :+ ( (-b + sqrt(d))/2*a ) :+( (-b - sqrt(d))/2*a )
+      List() :+ ((-b + sqrt(d)) / 2 * a) :+ ((-b - sqrt(d)) / 2 * a)
     }
+    // delta < 0 :  réelle et tuple(1ère complete, 2ème complexe)
     case _ => {
-      // delta < 0 ????? avec imaginaire ou solution vide dans R
-    //  result :+ (-b)/(2*a) :+ sqrt(-d)/(2*a) :+ (-sqrt(-d))/(2*a)
+      List() :+ (-b) / (2 * a) :+ (sqrt((-d)) / (2 * a), (-sqrt((-d))) / (2 * a))
     }
-    result
   }
 }
-
-solve(1,1,-2)
-solve(4,4,1)
+/* Exemples de test
+solve(1,1,-2)// (delta > 0)
+solve(4,4,1) // delta = 0
+solve(2,1,5) // delta < 0
+*/
