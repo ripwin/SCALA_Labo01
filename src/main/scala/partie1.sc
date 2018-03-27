@@ -1,4 +1,33 @@
 /*
+  Opération à un opérande
+ */
+def op(operator: Char, op :Double) : Double = {
+  operator match {
+    case '!' => if (!op.isValidInt) throw new Error("Opérande invalide, doit être entier.") else factorial(op.toInt)
+    case _ => throw new Error("Opérateur inconnu.")
+  }
+}
+def op(operator: Char, op1 : Double, op2 : Double) : Double = {
+  operator match {
+    case '+' => op1 + op2
+    case '-' => op1 - op2
+    case '*' => op1 * op2
+    case '/' => op1 / op2
+    case '%' => op1 % op2
+    case '^' =>  if (!op2.isValidInt) throw new Error("Opérande invalide, second opérande doit être entier.") else power(op1, op2.toInt)
+    case _ => throw new Error("Opérateur inconnu.")
+  }
+}
+
+op('+', 4, 3)
+op('-', 4, 3)
+op('*', 4, 3)
+op('/', 4, 3)
+op('%', 13, 3)
+op('^', 4, 3)
+
+
+/*
  * Puissance carrée
  */
 def square(x: Double) = x * x
