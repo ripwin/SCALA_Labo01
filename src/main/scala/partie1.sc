@@ -213,7 +213,6 @@ def solve(a: Double, b: Double, c: Double): Any = {
   if (a == 0) throw new Error("Syntax Error")
 
   val d = delta(a, b, c)
-  println(d)
   d match {
     // delta = 0 : solution unique
     case 0 => List() :+ (-b) / (2 * a)
