@@ -98,10 +98,31 @@ def primeNumber(x: Int) : String ={
 /*
  * Algorithme d'euclide étendu
  */
+def eucl(r: Int, u: Int, v: Int, rp: Int, up: Int, vp: Int): (Int, Int) = {
+  if(rp == 0)
+    return (u, v)
+  else
+    eucl(rp, up, vp, r - (r / rp) * rp, u - (r / rp) * up, v - (r / rp) * vp)
+}
+
+def egcd(a: Int, b: Int): Int = {
+  val r = eucl(a, 1, 0, b, 0, 1)
+  return a * r._1 +  b * r._2
+}
+
 
 /*
  * Inverse modulaire
  */
+def ModInvert(a: Int, b: Int): Int = {
+  val r = eucl(a, 1, 0, b, 0, 1)
+  val e = a * r._1 +  b * r._2
+
+  if(e != 1) throw new Error("No modular multiplicative inverse")
+
+  return r._1
+}
+
 
 /*
  * Equations 2eme degré
@@ -133,3 +154,4 @@ solve(1,1,-2)// (delta > 0)
 solve(4,4,1) // delta = 0
 solve(2,1,5) // delta < 0
 */
+
