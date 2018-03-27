@@ -66,12 +66,29 @@ def gcd(a: Int, b: Int) : Int =
 
 /*
  * Mémoire de la machine
- * utiliser une map var memory: Map(String, double) = Map()
  */
+var memory: Map[String, Double] = Map()
 
 /*
- * Equation du second degré
+  Enregistrer une variable dans la mémoire.
+  Lève une exception si le nom de la variable est invalide.
  */
+def saveVariable(variable: String, value: Double) : Unit = {
+  if (!variable.matches("[a-zA-Z]+")) {
+    throw new Error("Nom de variable invalide. Seulement a-zA-Z")
+  }
+  memory += variable -> value
+}
+
+/*
+  Récupérer la valeur d'une variable. Lève une exception
+  si la variable n'existe pas dans la mémoire.
+ */
+def getVariable(key: String) : Double = {
+  memory(key)
+}
+saveVariable("x", -6)
+getVariable("x")
 
 /*
  * Nombre premier
@@ -94,7 +111,7 @@ def primeNumber(x: Int) : String ={
  */
 
 /*
- * Inverse moduclaire
+ * Inverse modulaire
  */
 
 /*
