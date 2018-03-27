@@ -1,14 +1,3 @@
-
-/*
- * Addition
- */
-def add(x: Int, y: Int) = x + y
-
-/*
- * Soustraction
- */
-def substract(x: Int, y: Int) = x - y
-
 /*
  * Puissance carrée
  */
