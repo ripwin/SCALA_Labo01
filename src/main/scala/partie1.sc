@@ -21,7 +21,7 @@ def abs(x: Double) ={
 }
 
 /*
- * Racine carré
+ * Racine carrée
  */
 def sqrt(n: Double) = {
   val epsilon = 0.0001
