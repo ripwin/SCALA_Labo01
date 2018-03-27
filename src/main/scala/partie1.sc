@@ -45,13 +45,10 @@ def square(x: Double) = x * x
   */
 def power(x: Double, n: Int): Double = {
   n match {
-    case 0 => 1
+    case 0 => 1.0
     case a if (n < 0) => 1 / power(x, -n)
-    case _ => {
-      if (n == 0) 1.0
-      else if (n % 2 == 0) square(power(x, n / 2))
-      else x * power(x, n - 1)
-    }
+    case b if (n % 2 == 0) =>square(power(x, n / 2))
+    case _ => x * power(x, n - 1)
   }
 }
 
@@ -254,8 +251,11 @@ sqrt(0)
 
 // Power
 power(2,3)
+power(2,4)
 power(2,0)
 power(2,-3)
+power(-3, 2)
+power(-3,3)
 
 // Factorielle
 //factorial(-3) error
