@@ -36,9 +36,13 @@ def square(x: Double) = x * x
  * Puissance n
  */
 def power(x: Double, n: Int): Double = {
-  if (n == 0) 1.0
-  else if (n % 2 == 0) square(power(x, n / 2))
-  else x * power(x, n - 1)
+  if (n < 0) {
+    1 / power(x, -n)
+  } else {
+    if (n == 0) 1.0
+    else if (n % 2 == 0) square(power(x, n / 2))
+    else x * power(x, n - 1)
+  }
 }
 
 /**
